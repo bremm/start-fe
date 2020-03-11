@@ -1,0 +1,54 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist*
+/tmp
+/out-tsc
+/target
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+*.iml
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/HeadlessChrome_0.0.0_(Mac_OS_X_10.*)
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+yarn.lock
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# font generator
+/src/assets/fonts/*.html
+/src/assets/fonts/*.css
+/src/assets/fonts/*.json
+cypress/screenshots
+cypress/results
