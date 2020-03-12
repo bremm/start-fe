@@ -34,20 +34,19 @@ Order {
     Comments: string,
 }
 
-Value:
-{
+Value {
     Price: number,
     Currency: string,
 }
 
-ArticleOrder{
+ArticleOrder {
     ArticleId: number,
     Article: ArticleItem {
         Name: string,
         Description: string,
         Durability: string,
         PurchasingPrice: Value,
-        ProductionInfo {
+        ProductionInfo: ArticleProduction {
             Supplier: string,
             Origin: Address,
             CreationDate: Date,
