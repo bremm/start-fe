@@ -2,6 +2,7 @@
 
 A data model for customers of a fruit shop
 
+```javascript
 Address {
     Country: string,
     PLZ: number,
@@ -67,3 +68,5 @@ Customer {
     DeliveryAddress: Address,
     Orders: Order[],
 }
+
+```
