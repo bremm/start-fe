@@ -1,31 +1,47 @@
-<h1>{{customer.firstName}} {{customer.lastName}}</h1>
-<table class="table">
-    <tr>
-        <th>First Name</th>
-        <td>
-            <input 
-            [(ngModel)]="customer.firstName">
-        </td>
-    </tr>
-    <tr>
-        <th>Last Name</th>
-        <td>
-            <input 
-            [(ngModel)]="customer.lastName">
-        </td>
-    </tr>
-    <tr>
-        <th>Phone</th>
-        <td>
-            <input 
-            [(ngModel)]="customer.phone">
-        </td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td>
-            <input 
-            [(ngModel)]="customer.email">
-        </td>
-    </tr>
-</table>
+<div class="container" *ngIf="customer">
+
+    <h1>{{customer.firstName}} {{customer.lastName}}</h1>
+    <table class="table p-0 m-0">
+        <tr>
+            <th>Id</th>
+            <td>
+                <input 
+                readonly
+                value={{customer.id}}>
+            </td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>
+                <input 
+                [(ngModel)]="customer.firstName">
+            </td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>
+                <input 
+                [(ngModel)]="customer.lastName">
+            </td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>
+                <input 
+                [(ngModel)]="customer.phone">
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>
+                <input 
+                [(ngModel)]="customer.email">
+            </td>
+        </tr>
+    </table>
+    <button
+    class="btn btn-primary"
+    (click)="save(); goBack()">
+        Save
+    </button>
+</div>

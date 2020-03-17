@@ -5,7 +5,7 @@ export const MockCustomerList: Customer[] = [
         id: 0,
         firstName: "Albert",
         lastName: "Peterson",
-        phone: ["0176480828"],
+        phone: "0176480828",
         email: "albert@peterson.de",
         billingAddress: {
             countryCode: "DEU",
@@ -30,7 +30,7 @@ export const MockCustomerList: Customer[] = [
         id: 1,
         firstName: "Max",
         lastName: "Mustermann",
-        phone: ["0165000000"],
+        phone: "0165000000",
         email: "max@mustermann.de",
         billingAddress: {
             countryCode: "DEU",

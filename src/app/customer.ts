@@ -4,7 +4,7 @@ export interface Customer {
     id: number,
     firstName: string,
     lastName: string,
-    phone: string[],
+    phone: string,
     email: string,
     billingAddress: Address,
     deliveryAddress: Address,
