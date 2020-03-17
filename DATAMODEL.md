@@ -16,7 +16,7 @@ Address {
 Order {
     OrderId: number,
     OrderType: ["Rent", "Purchase"],
-    Articles: ArticleOrder[],
+    Items: Item[],
     OrderStatus: ["Ordered", "Processed", "Pending", "Shipped", "Received"],
     BillingInfo: Billing {
         BillingId: number,
@@ -32,6 +32,10 @@ Order {
     }
 
     Comments: string,
+    
+    customerId: number,
+    billingAddress: Address,
+    deliveryAddress: Address,
 }
 
 Value {
@@ -39,33 +43,22 @@ Value {
     Currency: string,
 }
 
-ArticleOrder {
-    ArticleId: number,
-    Article: ArticleItem {
-        Name: string,
-        Description: string,
-        Durability: string,
-        PurchasingPrice: Value,
-        ProductionInfo: ArticleProduction {
-            Supplier: string,
-            Origin: Address,
-            CreationDate: Date,
-        },
-    },
-    Price: Value,
-    Quantity: number,
+Item {
+    id: number,
+    articleId: number 
+    price: Value,
+    quantity: number,
 }
 
 
 Customer {
-    CustomerId: number,
-    FirstName: string,
-    LastName: string,
-    Phone: number[],
-    Email: string,
-    BillingAddress: Address,
-    DeliveryAddress: Address,
-    Orders: Order[],
+    id: number,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    email: string,
+    billingAddress: Address,
+    deliveryAddress: Address,
 }
 
 ```
