@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Orders</h2>
+    <div class="container">
+
+        <div *ngIf="orderList">
+            <div class="row">
+                <div class="col-1"> Id </div>
+                <div class="col"> Customer </div>
+                <div class="col"> Order Type </div>
+                <div class="col"> Last Item </div>
+            </div>
+            <div class="row clickable-row p-0 m-0" *ngFor="let order of orderList">
+                <a 
+                routerLink="/order/details/{{order.id}}"
+                class="col-1 m-0"> 
+                    {{order.id}} 
+                </a>
+                <a 
+                routerLink="/customer/details/{{order.customerId}}"
+                class="col m-0"> 
+                    {{order.customerId}} 
+                </a>
+                <p 
+                class="col m-0"> 
+                    {{order.orderType}} 
+                </p>
+                <a 
+                class="col m-0"> 
+                    {{order.items[order.items.length-1].articleId}} 
+                </a>
+            </div>            
+        </div>
+
+        <div class="container text-center">
+            <img 
+            *ngIf="!orderList"
+            class="m-5 text-center"
+            src="assets/spinner.gif">
+        </div>
+
+    </div>
+</div>

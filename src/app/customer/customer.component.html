@@ -1,27 +1,36 @@
 <div class="container">
-    <h2> Customers </h2>
-    <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
-        <tr
-        *ngFor="let customer of customerList"
-        routerLink="/customers/details/{{customer.id}}"
-        class="clickable-row">
-            <td>{{customer.id}}</td>
-            <td>
-                <a>
-                    {{customer.firstName}}
-                </a>
-            </td>
-            <td>
-                <a>
-                    {{customer.lastName}}
-                </a>
-            </td>
-        </tr>
-    </table>
+    <div *ngIf="customerList">
+        <h2> Customers </h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-1">Id</div>
+                <div class="col">First Name</div>
+                <div class="col">Last Name</div>
+            </div>
+            <div
+            *ngFor="let customer of customerList"
+            routerLink="/customer/details/{{customer.id}}"
+            class="row clickable-row">
+                <div class="col-1">{{customer.id}}</div>
+                <div class="col">
+                    <a>
+                        {{customer.firstName}}
+                    </a>
+                </div>
+                <div class="col">
+                    <a>
+                        {{customer.lastName}}
+                    </a>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+    <div class="container text-center">
+        <img 
+        *ngIf="!customerList"
+        class="m-5 text-center"
+        src="assets/spinner.gif">
+    </div>
 </div>

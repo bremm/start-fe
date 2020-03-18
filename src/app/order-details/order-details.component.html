@@ -1,0 +1,52 @@
+<div class="container">
+    <h2>Order Details</h2>
+    <div 
+    class="container"
+    *ngIf="order">
+        <div class="row align-items-center">
+            <div class="col"> Id </div>
+            <div class="col">
+                <input 
+                readonly 
+                class="col form-control"
+                value="{{order.id}}">
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col"> Customer Id </div>
+            <div class="col">
+                <input  
+                class="col form-control"
+                [(ngModel)]="order.customerId">
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col"> Order Type </div>
+       
+            <div class="col">
+
+
+                <select 
+                [(ngModel)]="order.orderType"
+                (ngModelChange)="onOrderTypeChange($event)"
+                class="form-control">
+                    <option
+                    *ngFor="let opt of _orderType; let i=index"
+                    [ngValue]="opt">{{opt}}</option>
+                </select>
+                
+
+            </div>
+        </div>
+        <button 
+        class="btn btn-primary my-3"
+        (click)="save(); goBack()">Save</button>
+    </div>
+
+    <div class="container text-center">
+        <img 
+        *ngIf="!order"
+        class="m-5 text-center"
+        src="assets/spinner.gif">
+    </div>
+</div>

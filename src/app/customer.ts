@@ -8,5 +8,5 @@ export interface Customer {
     email: string,
     billingAddress: Address,
     deliveryAddress: Address,
-    //orders: Order[],
+    ordersIds: number[],
 }

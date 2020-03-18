@@ -14,7 +14,7 @@ export const MockCustomerList: Customer[] = [
             city: "München",
             street: "Sonnenstraße",
             houseNumber: 1,
-            name: "Albert Peterson",
+            recipient: "Albert Peterson",
         },
         deliveryAddress: {
             countryCode: "DEU",
@@ -23,8 +23,9 @@ export const MockCustomerList: Customer[] = [
             city: "München",
             street: "Sonnenstraße",
             houseNumber: 1,
-            name: "Albert Peterson",
+            recipient: "Albert Peterson",
         },
+        ordersIds: [0,1],
     },
     {
         id: 1,
@@ -38,8 +39,8 @@ export const MockCustomerList: Customer[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 2,
-            name: "Max Mustermann",
+            houseNumber: 3,
+            recipient: "Max Mustermann",
         },
         deliveryAddress: {
             countryCode: "DEU",
@@ -47,8 +48,9 @@ export const MockCustomerList: Customer[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 2,
-            name: "Max Mustermann",
+            houseNumber: 3,
+            recipient: "Max Mustermann",
         },
+        ordersIds: [2],
     },
 ]

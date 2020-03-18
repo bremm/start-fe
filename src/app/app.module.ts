@@ -12,6 +12,11 @@ import { CustomerComponent } from './customer/customer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { InMemoryCustomerDataService } from './in-memory-customer-data.service';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { InputAddressComponent } from './input-address/input-address.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,11 @@ import { InMemoryCustomerDataService } from './in-memory-customer-data.service';
     PageNotFoundComponent,
     CustomerComponent,
     CustomerDetailsComponent,
+    OrdersComponent,
+    OrderDetailsComponent,
+    ArticlesComponent,
+    ArticleDetailsComponent,
+    InputAddressComponent,
   ],
   imports: [
     BrowserModule,

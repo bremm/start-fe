@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
 import { Location } from '@angular/common';
+import { HttpClientService } from '../http-client.service';
 
 @Component({
   selector: 'app-customer-details',
@@ -14,8 +14,10 @@ export class CustomerDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private customerService: CustomerService,
-    private location: Location) { }
+    private customerService: HttpClientService<Customer>,
+    private location: Location) { 
+      this.customerService.setObjectName("customer")
+    }
 
   ngOnInit(): void {
     this.fetchCustomer();
@@ -23,13 +25,13 @@ export class CustomerDetailsComponent implements OnInit {
 
   fetchCustomer(): void {
     const id = +this.route.snapshot.paramMap.get("id");
-    this.customerService.getCustomer(id).subscribe(
+    this.customerService.get(id).subscribe(
       customer => this.customer = customer
     );
   }
 
   save(): void {
-    this.customerService.putCustomer(this.customer).subscribe(
+    this.customerService.put(this.customer).subscribe(
       c => this.customer = c
     );
   }
