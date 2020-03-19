@@ -22,6 +22,7 @@ Order {
     orderId: number,
     customerId: number,
     orderType: ["Rent", "Purchase"],
+    date: Date,
     items: Item[],
     orderStatus: ["Ordered", "Processed", "Pending", "Shipped", "Received"],
     billingAddress: Address,

@@ -4,6 +4,6 @@ export interface Address {
     state: string,
     city: string,
     street: string,
-    houseNumber: number,
+    houseNumber: string,
     recipient: string,
 }

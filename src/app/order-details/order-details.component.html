@@ -25,16 +25,16 @@
        
             <div class="col">
 
-
-                <select 
-                [(ngModel)]="order.orderType"
-                (ngModelChange)="onOrderTypeChange($event)"
-                class="form-control">
-                    <option
-                    *ngFor="let opt of _orderType; let i=index"
-                    [ngValue]="opt">{{opt}}</option>
-                </select>
-                
+                <div class="form-group">
+                    <select 
+                    [(ngModel)]="order.orderType"
+                    (ngModelChange)="onOrderTypeChange($event)"
+                    class="form-control">
+                        <option
+                        *ngFor="let opt of _orderType; let i=index"
+                        [ngValue]="opt">{{opt}}</option>
+                    </select>
+                </div>
 
             </div>
         </div>

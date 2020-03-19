@@ -5,6 +5,7 @@ export const MockOrderList: Order[] = [
         id: 0,
         customerId: 0,
         orderType: OrderType.PURCHASE,
+        date: "2008-03-19T08:25:43+02:00",
         items: [
             {
                 id: 0,
@@ -20,7 +21,7 @@ export const MockOrderList: Order[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 1,
+            houseNumber: "1",
             recipient: "Mama",
         },
         deliveryAddress: {
@@ -29,7 +30,7 @@ export const MockOrderList: Order[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 1,
+            houseNumber: "1",
             recipient: "Albert Peterson",
         },
         comments: "Please beware of the dog in front of the house",
@@ -38,6 +39,7 @@ export const MockOrderList: Order[] = [
         id: 1,
         customerId: 0,
         orderType: OrderType.RENT,
+        date: "2019-03-19T08:25:43+02:00",
         items: [
             {
                 id: 0,
@@ -53,7 +55,7 @@ export const MockOrderList: Order[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 1,
+            houseNumber: "1",
             recipient: "Albert Peterson",
         },
         deliveryAddress: {
@@ -62,7 +64,7 @@ export const MockOrderList: Order[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 1,
+            houseNumber: "1",
             recipient: "Albert Peterson",
         },
         comments: "Watch out for the elder woman in the house",
@@ -71,6 +73,7 @@ export const MockOrderList: Order[] = [
         id: 2,
         customerId: 1,
         orderType: OrderType.PURCHASE,
+        date: "2020-03-19T08:25:43+02:00",
         items: [
             {
                 id: 0,
@@ -92,7 +95,7 @@ export const MockOrderList: Order[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 3,
+            houseNumber: "3",
             recipient: "Max Mustermann",
         },
         deliveryAddress: {
@@ -101,7 +104,7 @@ export const MockOrderList: Order[] = [
             state: "Bayern",
             city: "München",
             street: "Sonnenstraße",
-            houseNumber: 3,
+            houseNumber: "3",
             recipient: "Max Mustermann",
         },
         comments: "Watch out for the elder woman in the house",

@@ -57,6 +57,18 @@
         [(inputModel)]="customer.deliveryAddress">
         </app-input-address> 
         
+        <div class="row align-items-center mt-2">
+            <div class="col"><h5>Orders</h5></div>
+        </div>
+        <div 
+        *ngFor="let orderId of customer.ordersIds; let i = index"
+        class="row align-items-center">
+            <div class="col">
+                <input 
+                class="form-control"
+                [(ngModel)]="customer.ordersIds[i]">
+            </div>
+        </div>
 
   
         <button

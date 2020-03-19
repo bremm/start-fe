@@ -18,6 +18,7 @@ export interface Order {
     id: number,
     customerId: number,
     orderType: OrderType,
+    date: string,
     items: Item[],
     orderStatus: OrderStatus,
     billingAddress: Address,
