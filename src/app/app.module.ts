@@ -11,12 +11,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { CustomerComponent } from './customer/customer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
-import { InMemoryCustomerDataService } from './in-memory-customer-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { InputAddressComponent } from './input-address/input-address.component';
+import { InputItemComponent } from './input-item/input-item.component';
+import { InputPriceComponent } from './input-price/input-price.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { InputAddressComponent } from './input-address/input-address.component';
     ArticlesComponent,
     ArticleDetailsComponent,
     InputAddressComponent,
+    InputItemComponent,
+    InputPriceComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { InputAddressComponent } from './input-address/input-address.component';
     FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryCustomerDataService, {dataEncapsulation: false}
+      InMemoryDataService, {dataEncapsulation: false}
     ),
   ],
   providers: [],

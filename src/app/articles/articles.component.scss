@@ -1,0 +1,6 @@
+.clickable-row{
+    &:hover{
+        cursor: pointer;
+        background-color: darken($color: #e4e4e4, $amount: 1);
+    }
+}

@@ -4,40 +4,99 @@
     class="container"
     *ngIf="order">
         <div class="row align-items-center">
-            <div class="col"> Id </div>
-            <div class="col">
-                <input 
-                readonly 
-                class="col form-control"
-                value="{{order.id}}">
-            </div>
+            <label class="col-6"> Id </label>
+
+            <input 
+            readonly 
+            class="col form-control"
+            value="{{order.id}}">
+
         </div>
         <div class="row align-items-center">
-            <div class="col"> Customer Id </div>
-            <div class="col">
-                <input  
-                class="col form-control"
-                [(ngModel)]="order.customerId">
-            </div>
+            <label class="col-6"> Customer Id </label>
+
+            <input  
+            class="col form-control"
+            [(ngModel)]="order.customerId">
+
         </div>
         <div class="row align-items-center">
-            <div class="col"> Order Type </div>
+            <label class="col-6"> Order Type </label>
        
-            <div class="col">
 
-                <div class="form-group">
-                    <select 
-                    [(ngModel)]="order.orderType"
-                    (ngModelChange)="onOrderTypeChange($event)"
-                    class="form-control">
-                        <option
-                        *ngFor="let opt of _orderType; let i=index"
-                        [ngValue]="opt">{{opt}}</option>
-                    </select>
-                </div>
+            <select 
+            class="col-6 p-0 form-control"
+            [(ngModel)]="order.orderType">
+                <option
+                class=""
+                *ngFor="let opt of _orderType"
+                [ngValue]="opt">{{opt}}</option>
+            </select>
 
-            </div>
         </div>
+
+        <div class="row align-items-center">
+            <label class="col-6"> Date </label>
+       
+
+            <input 
+            class="col form-control"
+            type="datetime"
+            [(ngModel)]="order.date">
+
+
+        </div>
+
+        <div class="row align-items-center">
+            <label class="col-6"> Order Status </label>
+       
+
+            <select 
+            class="col form-control"
+            [(ngModel)]="order.orderStatus">
+                <option
+                *ngFor="let opt of _orderStatus"
+                [ngValue]="opt">{{opt}}</option>
+            </select>
+
+
+        </div>
+
+        <div class="row align-items-center mt-2">
+            <h5 class="col-6"> Items </h5>
+        </div>
+
+        <app-input-item
+        *ngFor="let _ of order.items; let i=index"
+        [(inputModel)]="order.items[i]">
+        </app-input-item>
+
+
+        <div class="row align-items-center mt-2">
+            <h5 class="col"> Billing Address</h5>
+        </div>
+        <app-input-address 
+        [(inputModel)]="order.billingAddress">
+        </app-input-address>
+        
+        <div class="row align-items-center mt-2">
+            <h5 class="col">Delivery Address</h5>
+        </div>
+        <app-input-address 
+        [(inputModel)]="order.deliveryAddress">
+        </app-input-address>
+       
+        <div class="row align-items-center mt-2">
+            <label class="col-6"> Comments </label>
+
+            <textarea 
+            class="col form-control"
+            [(ngModel)]="order.comments">
+            </textarea>
+
+        </div>
+
+
         <button 
         class="btn btn-primary my-3"
         (click)="save(); goBack()">Save</button>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Article } from '../article';
+import { HttpClientService } from '../http-client.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-article-details',
@@ -6,10 +10,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-details.component.scss']
 })
 export class ArticleDetailsComponent implements OnInit {
+  article: Article;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private articleService: HttpClientService<Article>,
+    private routing: ActivatedRoute,
+    private location: Location) { 
+      this.articleService.setObjectName("Article");
   }
 
+  ngOnInit(): void {
+    this.fetchArticle();
+  }
+
+  fetchArticle(): void {
+    const id = +this.routing.snapshot.paramMap.get('id');
+    this.articleService.get(id).subscribe(
+      article => this.article = article
+    );
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    this.articleService.put(this.article).subscribe(
+      c => this.article = c
+    );
+  }
 }

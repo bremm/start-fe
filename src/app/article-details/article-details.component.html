@@ -1,1 +1,67 @@
-<p>article-details works!</p>
+<div class="container" *ngIf="article">
+
+    <h1>{{article.name}}</h1>
+    <div class="container">
+        <div class="row align-items-center">
+            <label class="col-6"> Id </label>
+
+            <input 
+            readonly
+            class="col form-control"
+            value={{article.id}}>
+
+        </div>
+
+        <div class="row align-items-center">
+            <label class="col-6"> Name </label>
+
+            <input 
+            class="col form-control"
+            [(ngModel)]="article.name">
+
+        </div>
+
+        <div class="row align-items-center">
+            <label class="col-6"> Description </label>
+
+            <textarea 
+            class="col form-control"
+            [(ngModel)]="article.description">
+            </textarea>
+
+        </div>
+
+        <div class="row align-items-center">
+            <label class="col-6"> Supplier </label>
+
+            <input 
+            class="col form-control"
+            [(ngModel)]="article.supplier">
+
+        </div>
+
+        <div class="row align-items-center">
+            <label class="col-6"> Price </label>
+
+            <app-input-price 
+            class="col p-0"
+            [(inputModel)]="article.purchasePrice">
+            </app-input-price>
+
+        </div>
+    </div>
+
+    <button
+    class="btn btn-primary my-3"
+    (click)="save(); goBack()">
+        Save
+    </button>   
+</div>
+
+
+<div class="container text-center">
+    <img 
+    *ngIf="!article"
+    class="m-5 text-center"
+    src="assets/spinner.gif">
+</div>

@@ -1,0 +1,18 @@
+<div class="border-bottom py-2">
+
+    <div class="row align-items-center">
+        <label class="col-6"> Id </label>
+        <input class="col form-control" [(ngModel)]="inputModel.id">
+    </div>
+    <div class="row align-items-center">
+        <label class="col-6"> Article Id </label>
+        <input class="col form-control" [(ngModel)]="inputModel.articleId">
+    </div>
+    <div class="row align-items-center">
+        <label class="col-6"> Price </label>
+        <app-input-price 
+        class="col m-0 p-0" 
+        [(inputModel)]="inputModel.price"> 
+        </app-input-price>
+    </div>
+</div>

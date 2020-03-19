@@ -3,13 +3,13 @@
     <div class="container">
 
         <div *ngIf="orderList">
-            <div class="row">
+            <div class="row bg-dark text-white mb-2">
                 <div class="col-1"> Id </div>
                 <div class="col"> Customer </div>
                 <div class="col"> Order Type </div>
                 <div class="col"> Last Item </div>
             </div>
-            <div class="row clickable-row p-0 m-0" *ngFor="let order of orderList">
+            <div class="row clickable-row p-0 m-0 border-bottom" *ngFor="let order of orderList">
                 <a 
                 routerLink="/order/details/{{order.id}}"
                 class="col-1 m-0"> 

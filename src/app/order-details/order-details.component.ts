@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class OrderDetailsComponent implements OnInit {
   order: Order;
   _orderType = Object.values(OrderType);
+  _orderStatus = Object.values(OrderStatus);
 
   constructor(
     private route: ActivatedRoute,
@@ -39,13 +40,6 @@ export class OrderDetailsComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
-  }
-
-  onOrderTypeChange(newValue) {
-    console.warn(newValue);
-    if (this.order.orderType !== newValue) {
-      this.order.orderType = newValue;
-    }
   }
 
 }

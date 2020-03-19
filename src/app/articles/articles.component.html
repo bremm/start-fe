@@ -1,1 +1,31 @@
-<p>articles works!</p>
+<div class="container">
+    <h2>Articles</h2>
+    <div class="container">
+
+        <div *ngIf="articleList">
+            <div class="row bg-dark text-white mb-2">
+                <div class="col-1"> Id </div>
+                <div class="col"> Name </div>
+                <div class="col"> Price </div>
+                <div class="col"> Supplier </div>
+            </div>
+            <div 
+            *ngFor="let article of articleList"
+            class="row clickable-row border-bottom"
+            routerLink="/article/details/{{article.id}}">
+                <div class="col-1"> {{article.id}} </div>
+                <div class="col"> {{article.name}} </div>
+                <div class="col"> {{article.purchasePrice.amount}} {{article.purchasePrice.currency}}</div>
+                <div class="col"> {{article.supplier}} </div>
+            </div>
+        </div>
+
+
+        <div class="container text-center">
+            <img 
+            *ngIf="!articleList"
+            class="m-5 text-center"
+            src="assets/spinner.gif">
+        </div>
+    </div>
+</div>

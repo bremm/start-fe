@@ -2,7 +2,7 @@
     <div *ngIf="customerList">
         <h2> Customers </h2>
         <div class="container">
-            <div class="row">
+            <div class="row bg-dark text-white mb-2">
                 <div class="col-1">Id</div>
                 <div class="col">First Name</div>
                 <div class="col">Last Name</div>
@@ -10,7 +10,7 @@
             <div
             *ngFor="let customer of customerList"
             routerLink="/customer/details/{{customer.id}}"
-            class="row clickable-row">
+            class="row clickable-row border-bottom">
                 <div class="col-1">{{customer.id}}</div>
                 <div class="col">
                     <a>

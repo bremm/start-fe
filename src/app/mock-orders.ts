@@ -10,7 +10,7 @@ export const MockOrderList: Order[] = [
             {
                 id: 0,
                 articleId: 0,
-                price: { amount: 10, currency: "€"},
+                price: { amount: 10, currency: "EUR"},
                 quantity: 1,
             },
         ],
@@ -44,7 +44,7 @@ export const MockOrderList: Order[] = [
             {
                 id: 0,
                 articleId: 1,
-                price: { amount: 5, currency: "€"},
+                price: { amount: 5, currency: "EUR"},
                 quantity: 89,
             },
         ],
@@ -78,13 +78,13 @@ export const MockOrderList: Order[] = [
             {
                 id: 0,
                 articleId: 2,
-                price: { amount: 10000, currency: "$"},
+                price: { amount: 10000, currency: "EUR"},
                 quantity: 3,
             },
             {
                 id: 1,
                 articleId: 3,
-                price: { amount: 1000, currency: "$"},
+                price: { amount: 1000, currency: "USD"},
                 quantity: 4,
             },
         ],

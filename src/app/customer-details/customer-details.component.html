@@ -3,71 +3,74 @@
     <h1>{{customer.firstName}} {{customer.lastName}}</h1>
     <div class="container">
         <div class="row align-items-center">
-            <div class="col">Id</div>
-            <div class="col">
-                <input 
-                readonly
-                class="form-control"
-                value={{customer.id}}>
-            </div>
+            <label class="col">Id</label>
+
+            <input 
+            readonly
+            class="col form-control"
+            value={{customer.id}}>
+
         </div>
         <div class="row align-items-center">
-            <div class="col">First Name</div>
-            <div class="col">
-                <input 
-                class="form-control"
-                [(ngModel)]="customer.firstName">
-            </div>
+            <label class="col">First Name</label>
+
+            <input 
+            class="col form-control"
+            [(ngModel)]="customer.firstName">
+
         </div>
         <div class="row align-items-center">
             <div class="col">Last Name</div>
-            <div class="col">
-                <input 
-                class="form-control"
-                [(ngModel)]="customer.lastName">
-            </div>
+
+            <input 
+            class="col form-control"
+            [(ngModel)]="customer.lastName">
+
         </div>
         <div class="row align-items-center">
-            <div class="col">Phone</div>
-            <div class="col">
-                <input 
-                class="form-control"
-                [(ngModel)]="customer.phone">
-            </div>
+            <label class="col">Phone</label>
+
+            <input 
+            class="col form-control"
+            inputmode="tel"
+            [(ngModel)]="customer.phone">
+
         </div>
         <div class="row align-items-center">
-            <div class="col">Email</div>
-            <div class="col">
-                <input 
-                class="form-control"
-                [(ngModel)]="customer.email">
-            </div>
+            <label class="col">Email</label>
+
+            <input 
+            class="col form-control"
+            inputmode="email"
+            [(ngModel)]="customer.email">
+
         </div>
         <div class="row align-items-center mt-2">
-            <div class="col"><h5>Billing Address</h5></div>
+            <h5 class="col">Billing Address</h5>
         </div>
         <app-input-address
         [(inputModel)]="customer.billingAddress">
         </app-input-address> 
 
         <div class="row align-items-center mt-2">
-            <div class="col"><h5>Delivery Address</h5></div>
+            <h5 class="col">Delivery Address</h5>
         </div>
         <app-input-address
         [(inputModel)]="customer.deliveryAddress">
         </app-input-address> 
         
         <div class="row align-items-center mt-2">
-            <div class="col"><h5>Orders</h5></div>
+            <h5 class="col">Orders</h5>
         </div>
         <div 
         *ngFor="let orderId of customer.ordersIds; let i = index"
         class="row align-items-center">
-            <div class="col">
-                <input 
-                class="form-control"
-                [(ngModel)]="customer.ordersIds[i]">
-            </div>
+
+            <input 
+            class="col form-control"
+            type="number"
+            [(ngModel)]="customer.ordersIds[i]">
+
         </div>
 
   

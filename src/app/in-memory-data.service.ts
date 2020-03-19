@@ -3,18 +3,20 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Customer } from './customer';
 import { MockCustomerList } from './mock-customers';
 import { MockOrderList } from './mock-orders';
+import { MockArticleList } from './mock-articles';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InMemoryCustomerDataService implements InMemoryDbService {
+export class InMemoryDataService implements InMemoryDbService {
   
   constructor() { }
   
   createDb() {
     const customer = MockCustomerList;
     const order = MockOrderList;
-    return {customer, order};
+    const article = MockArticleList;
+    return {customer, order, article};
   }
 
   genId(customers: Customer[]): number {
