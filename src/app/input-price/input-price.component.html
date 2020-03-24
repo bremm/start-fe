@@ -5,12 +5,13 @@ class="row m-0 p-0 align-items-center">
     #inputPrice
     [(ngModel)] = "inputModel.amount"
     class="form-control col"
+    placeholder="Price"
     type="number"
     required
     min="0.00" 
     max="1000000.00" 
     step="0.01" />
-    <span class="col-4 px-0"> 
+    <span class="col px-0"> 
         <select
         class="form-control"
         [(ngModel)]="inputModel.currency">

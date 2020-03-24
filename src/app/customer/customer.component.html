@@ -6,6 +6,7 @@
                 <div class="col-1">Id</div>
                 <div class="col">First Name</div>
                 <div class="col">Last Name</div>
+                <div class="col-1"></div>
             </div>
             <div
             *ngFor="let customer of customerList"
@@ -22,7 +23,34 @@
                         {{customer.lastName}}
                     </a>
                 </div>
+
+                <button
+                class="col-1 btn btn-default p-0"
+                type="button"
+                (click)="$event.stopPropagation();delete(customer.id)">
+                    <span 
+                    class="badge badge-danger badge-pill align-text-center"
+                    title="Delete '{{customer.lastName}}'">
+                        -
+                    </span>
+                </button>
             </div>
+
+
+            <div class="row mt-1 justify-content-center">
+                <button
+                class="col-3 btn btn-lg btn-default p-0"
+                type="button"
+                (click)="createCustomer()"
+                routerLink="/customer/details/{{getMaxId()+1}}">
+                    <span 
+                    class="col-12 badge badge-primary badge-pill align-text-center"
+                    title="Add new Customer">
+                        +
+                    </span>
+                </button>
+            </div>
+
         </div>
 
     </div>

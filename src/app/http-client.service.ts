@@ -50,6 +50,26 @@ export class HttpClientService<T> {
       catchError(this.handleError<T>("Put " + this.objName))
     );
   }
+  
+
+  post(newObj: T): Observable<T> {
+    return this.http.post<T>(this.baseUrl, newObj, this.httpOptions)
+      .pipe(
+        tap( addedObj => this.log(`Added new ${this.objName}`)),
+        catchError(this.handleError<T>(`Added ${this.objName}`))
+      );
+  }
+
+
+  delete(objId: number) :Observable<T> {
+    console.log(objId);
+    const url = this.baseUrl+"/"+objId;
+    return this.http.delete<T>(url, this.httpOptions)
+    .pipe(
+      tap( _ => this.log(`Deleted ${this.objName} id ${objId}`)),
+      catchError(this.handleError<T>(`Delete ${this.objName}`))
+    );
+  }
 
 
   private handleError<T> (operation: string = 'operation', result?: T) {

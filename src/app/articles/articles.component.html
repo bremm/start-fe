@@ -8,6 +8,7 @@
                 <div class="col"> Name </div>
                 <div class="col"> Price </div>
                 <div class="col"> Supplier </div>
+                <div class="col-1"></div>
             </div>
             <div 
             *ngFor="let article of articleList"
@@ -17,6 +18,31 @@
                 <div class="col"> {{article.name}} </div>
                 <div class="col"> {{article.purchasePrice.amount}} {{article.purchasePrice.currency}}</div>
                 <div class="col"> {{article.supplier}} </div>
+
+                <button
+                class="col-1 btn btn-default p-0"
+                type="button"
+                (click)="$event.stopPropagation();delete(article.id)">
+                    <span 
+                    class="badge badge-danger badge-pill align-text-center"
+                    title="Delete '{{article.name}}'">
+                        -
+                    </span>
+                </button>
+            </div>
+            
+            <div class="row mt-1 justify-content-center">
+                <button
+                class="col-3 btn btn-lg btn-default p-0"
+                type="button"
+                (click)="createArticle()"
+                routerLink="/article/details/{{getMaxId()+1}}">
+                    <span 
+                    class="col-12 badge badge-primary badge-pill align-text-center"
+                    title="Add new Article">
+                        +
+                    </span>
+                </button>
             </div>
         </div>
 

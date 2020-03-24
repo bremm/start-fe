@@ -12,7 +12,11 @@ export class CustomerComponent implements OnInit {
 
   constructor(private customerService: HttpClientService<Customer>) {
     customerService.setObjectName("customer");
-   }
+  }
+
+  getMaxId(): number {
+    return Math.max(... this.customerList.map(o => o.id));
+  }
 
   ngOnInit(): void {
     this.getCustomers();
@@ -22,6 +26,21 @@ export class CustomerComponent implements OnInit {
     this.customerService.getAll().subscribe(
       customers => this.customerList = customers
     );
+  }
+
+  createCustomer(): void {
+    this.customerService.post({
+      billingAddress: {}, 
+      deliveryAddress: {}, 
+      ordersIds: [],
+    } as Customer).subscribe(
+      newCustomer => this.customerList.push(newCustomer)
+    );
+  }
+
+  delete(id: number) : void {
+    this.customerService.delete(id).subscribe( 
+      _ => this.customerList = this.customerList.filter(c => c.id != id))
   }
 
 }
