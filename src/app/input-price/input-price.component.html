@@ -1,4 +1,6 @@
-<div class="row m-0 p-0 align-items-center">
+<div 
+*ngIf="inputModel"
+class="row m-0 p-0 align-items-center">
     <input
     #inputPrice
     [(ngModel)] = "inputModel.amount"
@@ -20,3 +22,8 @@
         </select>
     </span>
 </div>
+
+<p
+*ngIf="!inputModel">
+    missing argument 'inputModel'
+</p>

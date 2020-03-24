@@ -1,25 +1,43 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArticleDetailsComponent } from './article-details.component';
+// import { ArticleDetailsComponent } from './article-details.component';
+// import { HttpClientService } from '../http-client.service';
+// import { httpCustomerStub } from '../http-mock'
+// import { of } from 'rxjs';
+// import { MockArticleList } from '../mock-articles';
+// import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRouteStub } from '../test/activated-route-stub';
 
-describe('ArticleDetailsComponent', () => {
-  let component: ArticleDetailsComponent;
-  let fixture: ComponentFixture<ArticleDetailsComponent>;
+// describe('ArticleDetailsComponent', () => {
+//   let component: ArticleDetailsComponent;
+//   let fixture: ComponentFixture<ArticleDetailsComponent>;
+//   let httpSpyGet: any;
+//   let activatedRoute: ActivatedRouteStub;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ArticleDetailsComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     const httpSpy = jasmine.createSpyObj('HttpClientService', ['get', 'setObjectName']);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ArticleDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     httpSpyGet = httpSpy.get.and.returnValue( of(MockArticleList[0]) );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//     TestBed.configureTestingModule({
+//       declarations: [ ArticleDetailsComponent ],
+//       providers:    [ 
+//         { provide: HttpClientService, useValue: httpSpy },
+//         { provide: ActivatedRoute, useValue: ActivatedRouteStub },
+//        ]
+//     })
+//     .compileComponents();
+//   }));
+
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(ArticleDetailsComponent);
+//     activatedRoute = fixture.debugElement.injector.get(ActivatedRoute) as unknown as ActivatedRouteStub;
+//     activatedRoute.setParamMap({id: 0});
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
+
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

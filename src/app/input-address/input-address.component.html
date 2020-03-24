@@ -1,4 +1,5 @@
-
+<div
+*ngIf="inputModel">
     <div class="row align-items-center">
         <label class="col"> CountryCode </label>
 
@@ -55,3 +56,9 @@
         [(ngModel)]="inputModel.recipient">
 
     </div>
+</div>
+
+<p
+*ngIf="!inputModel">
+    missing argument 'inputModel'
+</p>
