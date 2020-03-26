@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from '../article';
-import { HttpClientService } from '../http-client.service';
+import { ArticleService } from '../http-client.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -13,10 +13,9 @@ export class ArticleDetailsComponent implements OnInit {
   article: Article;
 
   constructor(
-    private articleService: HttpClientService<Article>,
+    private articleService: ArticleService,
     private routing: ActivatedRoute,
     private location: Location) { 
-      this.articleService.setObjectName("Article");
   }
 
   ngOnInit(): void {

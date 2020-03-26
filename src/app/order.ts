@@ -14,14 +14,14 @@ export enum OrderStatus {
     RECEIVED = "Received",
 }
 
-export interface Order {
-    id: number,
-    customerId: number,
-    orderType: OrderType,
-    date: string,
-    items: Item[],
-    orderStatus: OrderStatus,
-    billingAddress: Address,
-    deliveryAddress: Address,
-    comments: string,
+export class Order {
+    id: number;
+    customerId: number;
+    orderType: OrderType;
+    date: string;
+    items: Item[];
+    orderStatus: OrderStatus;
+    billingAddress: Address;
+    deliveryAddress: Address;
+    comments: string;
 }

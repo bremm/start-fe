@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientService } from '../http-client.service';
+import { OrderService, CustomerService, ArticleService } from '../http-client.service';
 import { Order } from '../order';
-import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { Item } from '../item';
+import { Address } from '../address';
+import { Price } from '../price';
 
 @Component({
   selector: 'app-orders',
@@ -11,17 +12,24 @@ import { Item } from '../item';
 })
 export class OrdersComponent implements OnInit {
   orderList: Order[];
+  customerNameList: {id: number, name: string}[];
+  articleNameList: {id: number, name: string}[];
 
-  constructor(private orderService: HttpClientService<Order>) {
-    orderService.setObjectName("order");
+  constructor(
+    private orderService: OrderService,
+    private customerService: CustomerService,
+    private articleService: ArticleService) {
+ 
   }
 
   getMaxId(): number {
     return Math.max(... this.orderList.map(o => o.id));
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.fetchOrders();
+    this.fetchCustomers();
+    this.fetchArticle();
   }
   
   fetchOrders(): void {
@@ -30,14 +38,44 @@ export class OrdersComponent implements OnInit {
     );
   }
 
+  fetchCustomers(): void {
+    this.customerService.getAll().subscribe(
+      customers => this.customerNameList = customers.map(c => {
+        return {id: c.id, name: c.firstName+" "+c.lastName}
+      })
+    );
+  }
+
+  fetchArticle(): void {
+    this.articleService.getAll().subscribe(
+      aa => {
+        this.articleNameList = aa.map(a => {
+          return {id: a.id, name: a.name};});
+      });
+  }
+
+  getCustomer(id: number): string {
+    if(this.customerNameList)
+      for(let c of this.customerNameList)
+        if(c.id === id)
+          return c.name;
+  }
+
   createOrder(): void {
-    this.orderService.post({
+    const now = new Date();
+    const newOrder = {
+      id: this.getMaxId()+1,
+      date: now.toISOString(),
       items: [
-        {} as Item
+        {
+          id: 0,
+          price: {currency: 'EUR'} as Price,
+        } as Item
       ],
-      billingAddress: {},
-      deliveryAddress: {},
-    } as Order).subscribe(
+      billingAddress: {} as Address,
+      deliveryAddress: {} as Address,
+    } as Order;
+    this.orderService.post(newOrder).subscribe(
       newOrder => this.orderList.push(newOrder)
     );
   }
@@ -46,6 +84,11 @@ export class OrdersComponent implements OnInit {
     this.orderService.delete(id).subscribe(
       _ => this.orderList = this.orderList.filter(o => o.id != id)
     );
+  }
+
+  getDate(str: string) {
+    const d = new Date(str);
+    return d.toLocaleDateString();
   }
 
 }

@@ -4,11 +4,22 @@
 
         <div class="row align-items-center">
             <label class="col-6"> Id </label>
-            <input class="col form-control" [(ngModel)]="inputModel.id">
+            <input readonly class="col form-control" [(ngModel)]="inputModel.id">
         </div>
         <div class="row align-items-center">
-            <label class="col-6"> Article Id </label>
-            <input class="col form-control" [(ngModel)]="inputModel.articleId">
+            <label 
+            class="col-6"
+            [title]="inputModel.articleId"> Article </label>
+            <select
+            *ngIf="articleList"
+            class="col form-control"
+            [(ngModel)]="inputModel.articleId">
+                <option
+                *ngFor="let article of articleList"
+                [ngValue]="article.id">
+                    {{article.name}}
+                </option>
+            </select>
         </div>
         <div class="row align-items-center">
             <label class="col-6"> Price </label>

@@ -17,6 +17,7 @@
 
             <input 
             class="col form-control"
+            placeholder="Article Name"
             [(ngModel)]="article.name">
 
         </div>
@@ -26,6 +27,7 @@
 
             <textarea 
             class="col form-control"
+            placeholder="Description"
             [(ngModel)]="article.description">
             </textarea>
 
@@ -36,6 +38,7 @@
 
             <input 
             class="col form-control"
+            placeholder="Supplier"
             [(ngModel)]="article.supplier">
 
         </div>
@@ -53,7 +56,7 @@
 
     <button
     class="btn btn-primary my-3"
-    (click)="save(); goBack()">
+    (click)="save();goBack()">
         Save
     </button>   
 </div>

@@ -6,8 +6,8 @@
             <div class="row bg-dark text-white mb-2">
                 <div class="col-1"> Id </div>
                 <div class="col"> Customer </div>
-                <div class="col"> Order Type </div>
-                <div class="col"> Last Item </div>
+                <div class="col"> Date </div>
+                <div class="col"> Item </div>
                 <div class="col-1"> </div>
             </div>
             <div 
@@ -19,6 +19,14 @@
                     {{order.id}} 
                 </a>
                 <a 
+                *ngIf="customerNameList"
+                (click)="$event.stopPropagation()"
+                routerLink="/customer/details/{{order.customerId}}"
+                class="col m-0"> 
+                    {{customerNameList[order.customerId].name}} 
+                </a>
+                <a 
+                *ngIf="!customerNameList"
                 (click)="$event.stopPropagation()"
                 routerLink="/customer/details/{{order.customerId}}"
                 class="col m-0"> 
@@ -26,11 +34,23 @@
                 </a>
                 <p 
                 class="col m-0"> 
-                    {{order.orderType}} 
+                    {{getDate(order.date)}} 
                 </p>
                 <a 
                 class="col m-0"> 
-                    {{order.items[order.items.length-1].articleId}} 
+                    <div
+                    *ngFor="let item of order.items">
+                        <p 
+                        *ngIf="articleNameList"
+                        class="my-0">
+                            {{articleNameList[item.articleId].name}}
+                        </p>
+                        <p 
+                        *ngIf="!articleNameList"
+                        class="my-0"> 
+                            {{item.articleId}} 
+                        </p>
+                    </div>
                 </a>
 
                 <button

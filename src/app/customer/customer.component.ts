@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer';
-import { HttpClientService } from '../http-client.service';
+import { CustomerService } from '../http-client.service';
 
 @Component({
   selector: 'app-customer',
@@ -10,8 +10,7 @@ import { HttpClientService } from '../http-client.service';
 export class CustomerComponent implements OnInit {
   public customerList: Customer[];
 
-  constructor(private customerService: HttpClientService<Customer>) {
-    customerService.setObjectName("customer");
+  constructor(private customerService: CustomerService) {
   }
 
   getMaxId(): number {

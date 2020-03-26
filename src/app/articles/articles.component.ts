@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../article';
-import { HttpClientService } from '../http-client.service';
+import { ArticleService } from '../http-client.service';
 import { Price } from '../price';
 
 @Component({
@@ -11,8 +11,7 @@ import { Price } from '../price';
 export class ArticlesComponent implements OnInit {
   articleList: Article[];
 
-  constructor(private articleService: HttpClientService<Article>) {
-    articleService.setObjectName("Article");
+  constructor(private articleService: ArticleService) {
    }
 
   getMaxId(): number {

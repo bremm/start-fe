@@ -65,20 +65,43 @@
         <div 
         *ngFor="let orderId of customer.ordersIds; let i = index"
         class="row align-items-center">
-
-            <input 
+            <select
             class="col form-control"
-            type="number"
             [(ngModel)]="customer.ordersIds[i]">
+                <option 
+                *ngFor="let order of orderList"
+                [value]="order.id"
+                [ngValue]="order.id">
+                    {{getDate(order.date)}}
+                    <div
+                    *ngIf="articleList">
+                        <span 
+                        *ngFor="let item of order.items">
+                            {{getArticleString(item.articleId)}}
+                        </span> 
+                    </div>
+                    [id:{{order.id}}]
+                </option>
+            </select>
 
         </div>
 
-  
-        <button
-        class="btn btn-primary my-3"
-        (click)="save(); goBack()">
-            Save
-        </button>
+        <div class="row">
+
+            <button
+            class="col btn btn-primary m-3"
+            (click)="save(); goBack()">
+                Save
+            </button>
+            
+            <button
+            class="col btn btn-warning m-3"
+            routerLink="/order/details/{{getMaxOrderId()+1}}"
+            (click)="save(); createOrder()">
+                Add new Order
+            </button>
+
+        </div>
     </div>
 
 </div>

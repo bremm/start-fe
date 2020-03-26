@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomerComponent } from './customer.component';
 import { MockCustomerList } from '../mock-customers';
 import { of } from 'rxjs';
-import { HttpClientService } from '../http-client.service';
+import { CustomerService } from '../http-client.service';
 
 describe('CustomerComponent', () => {
   let component: CustomerComponent;
@@ -12,14 +12,14 @@ describe('CustomerComponent', () => {
 
   beforeEach(async(() => {
 
-    const httpSpy = jasmine.createSpyObj('HttpClientService', ['getAll', 'setObjectName']);
+    const httpSpy = jasmine.createSpyObj('CustomerService', ['getAll']);
 
     httpSpyGetAll = httpSpy.getAll.and.returnValue( of(MockCustomerList) );
 
 
     TestBed.configureTestingModule({
       declarations: [ CustomerComponent ],
-      providers:  [ {provide: HttpClientService, useValue: httpSpy } ]
+      providers:  [ {provide: CustomerService, useValue: httpSpy } ]
     })
     .compileComponents();
   }));
