@@ -102,6 +102,28 @@
             </button>
 
         </div>
+
+
+
+
+
+
+
+        <app-modal-info
+        header="Invalid input"
+        id="myModalInfo"
+        textDismiss="Leave anyway"
+        textAccept="Stay"
+        (accept)="acceptDeactivate()">
+            <p> Changes have not been saved. There are still mandatory values missing </p>
+        </app-modal-info>
+
+
+
+
+
+
+
     </div>
 
 </div>

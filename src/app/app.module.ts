@@ -20,6 +20,7 @@ import { InputAddressComponent } from './input-address/input-address.component';
 import { InputItemComponent } from './input-item/input-item.component';
 import { InputPriceComponent } from './input-price/input-price.component';
 import { InputValidatorComponent } from './input-validator/input-validator.component';
+import { ModalInfoComponent } from './modal-info/modal-info.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { InputValidatorComponent } from './input-validator/input-validator.compo
     InputItemComponent,
     InputPriceComponent,
     InputValidatorComponent,
+    ModalInfoComponent,
   ],
   imports: [
     BrowserModule,

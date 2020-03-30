@@ -19,7 +19,7 @@ export class InputPriceComponent implements OnInit {
   }
 
   valueChanged(event){
-    console.warn(event.target.value);
+    console.log(event.target.value);
 
   }
 

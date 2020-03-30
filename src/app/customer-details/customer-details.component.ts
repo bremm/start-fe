@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../customer';
 import { Location } from '@angular/common';
@@ -7,6 +7,9 @@ import { Order } from '../order';
 import { Article } from '../article';
 import { Item } from '../item';
 import { Price } from '../price';
+import { Observable } from 'rxjs';
+import { ModalInfoComponent } from '../modal-info/modal-info.component';
+import { ModalInfoService, ModalStatus } from '../modal-info.service';
 
 
 @Component({
@@ -14,17 +17,20 @@ import { Price } from '../price';
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.scss']
 })
-export class CustomerDetailsComponent implements OnInit {
+export class CustomerDetailsComponent implements OnInit{
   customer: Customer;
   orderList: Order[];
   articleList: Article[];
+  canDismiss: Observable<boolean>;
+  @ViewChild(ModalInfoComponent) modalElement: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
     private customerService: CustomerService,
     private orderService: OrderService,
     private articleService: ArticleService,
-    private location: Location) { 
+    private location: Location,
+    private modalService: ModalInfoService) { 
     }
 
   ngOnInit(): void {
@@ -106,4 +112,33 @@ export class CustomerDetailsComponent implements OnInit {
     this.orderService.post(newOrder).subscribe();
   }
 
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if(this.customer.firstName && this.customer.lastName)
+      return true;
+    this.modalService.modalStatus.next(ModalStatus.Visible);
+
+    console.log("CustomerDetailsComponent.canDeactivate()");
+
+    const canLeave = Observable.create(
+      observer => {
+        this.modalService.modalStatus.subscribe(
+          modalStatus => {
+            console.log("In subscription to Modal Status");
+            console.log(modalStatus);
+            if(modalStatus === ModalStatus.Accepted)
+              observer.next(false);
+            else
+              observer.confirm(true);
+          }
+        );
+      }
+    );
+    console.log(canLeave);
+    return canLeave;
+  }
+
+  acceptDeactivate(): void {
+
+  }
 }

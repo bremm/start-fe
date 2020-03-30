@@ -42,4 +42,8 @@ export class CustomerComponent implements OnInit {
       _ => this.customerList = this.customerList.filter(c => c.id != id))
   }
 
+  logStuff(event): void {
+    console.log(event);
+  }
+
 }

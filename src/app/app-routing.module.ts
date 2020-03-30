@@ -7,6 +7,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { CanDeactivateCustomerDetailsGuard } from './can-deactivate-customer-details.guard';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { 
     path : "customer/details/:id",
     component : CustomerDetailsComponent,
+    canDeactivate: [CanDeactivateCustomerDetailsGuard]
   },
   { 
     path : "order",
