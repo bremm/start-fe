@@ -1,78 +1,82 @@
 import { Component, OnInit, Input, Output, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Event } from '@angular/router';
-import { ModalInfoService, ModalStatus } from '../modal-info.service';
+import { Subject, Observable, Subscription } from 'rxjs';
+
+
+export enum ModalStatus {
+  Hidden = 0,
+  Visible = 1,
+  Accepted = 2,
+  Dismiss = 3,
+}
 
 @Component({
   selector: 'app-modal-info',
   templateUrl: './modal-info.component.html',
   styleUrls: ['./modal-info.component.scss']
 })
-export class ModalInfoComponent implements OnInit {
+export class ModalInfoComponent implements OnInit, OnDestroy {
   @Input() id: string;
   @Input() header?: string;
   @Input() textAccept?: string;
   @Input() textDismiss?: string;
-  @Output() dismiss = new EventEmitter();
-  @Output() accept = new EventEmitter();
+  @Input() status: Subject<ModalStatus> = new Subject<ModalStatus>();
+
+  @Output() onAccept = new EventEmitter<boolean>();
+
+  private _disposableStatus: Subscription;
 
   constructor(
-    private modalService: ModalInfoService,
     private elementRef: ElementRef,
     private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.initSubscriptions();
-    this.hide();
+    this._initInternalStatusSubscription();
+    this.setVisability(false);
   }
 
-  initSubscriptions(): void {
-    this.modalService.modalStatus.subscribe(
+
+  private _initInternalStatusSubscription(): void {
+    this._disposableStatus = this.status.subscribe(
       (status) => {
         switch(+status){
           case ModalStatus.Hidden:
-            this.hide();
+            this.setVisability(false);
             break;
           case ModalStatus.Visible:
-            this.show();
+            this.setVisability(true);
             break;
           case ModalStatus.Accepted:
-            this.hide();
+            this.setVisability(false);
+            this.onAccept.emit(true);
             break;
-          case ModalStatus.Rejected:
-            this.hide();
+            case ModalStatus.Dismiss:
+              this.setVisability(false);
+              this.onAccept.emit(false);
             break;
         }
       }
     );
   }
 
-  hide(): void {
-    console.log("Modal Dialog should hide");
-    
+  
+  setVisability(visible: boolean): void {
+    console.log("ModalInfoComponent.setVisability: "+visible);
     this.renderer.setStyle(this.elementRef.nativeElement, 
       "display", 
-      "none");
+      visible? "table": "none");
   }
+
   
-  show(): void {
-    console.log("Modal Dialog should show");
-    this.renderer.setStyle(this.elementRef.nativeElement, 
-      "display", 
-      "table");
+  setAccepted(accept: boolean): void {
+    console.log("ModalInfoComponent.setAccepted: " + accept);
+    accept ? 
+      this.status.next(ModalStatus.Accepted) :
+      this.status.next(ModalStatus.Dismiss);
   }
 
-
-  onDismiss(event: Event): void {
-    console.log("Modal Dialog should dismiss");
-    this.modalService.modalStatus.next(ModalStatus.Rejected);
+  ngOnDestroy() {
+    this._disposableStatus.unsubscribe();
   }
-  
-  onAccept(event: Event): void {
-    console.log("Modal Dialog should accept");
-    this.modalService.modalStatus.next(ModalStatus.Accepted);
-  }
-
-
 
 }
