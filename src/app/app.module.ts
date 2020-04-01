@@ -19,8 +19,8 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { InputAddressComponent } from './input-address/input-address.component';
 import { InputItemComponent } from './input-item/input-item.component';
 import { InputPriceComponent } from './input-price/input-price.component';
-import { InputValidatorComponent } from './input-validator/input-validator.component';
 import { ModalInfoComponent } from './modal-info/modal-info.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { ModalInfoComponent } from './modal-info/modal-info.component';
     InputAddressComponent,
     InputItemComponent,
     InputPriceComponent,
-    InputValidatorComponent,
     ModalInfoComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

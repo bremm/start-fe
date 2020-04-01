@@ -46,12 +46,8 @@
             </div>
         </div>
 
-
-        <div class="container text-center">
-            <img 
-            *ngIf="!articleList"
-            class="m-5 text-center"
-            src="assets/spinner.gif">
-        </div>
     </div>
 </div>
+
+
+<app-loading *ngIf="!articleList"></app-loading>

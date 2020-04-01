@@ -8,13 +8,12 @@ import { ArticleService } from '../http-client.service';
 describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
   let fixture: ComponentFixture<ArticlesComponent>;
-  let httpSpyGetAll: any;
 
   beforeEach(async(() => {
 
     const httpSpy = jasmine.createSpyObj('ArticleService', ['getAll']);
 
-    httpSpyGetAll = httpSpy.getAll.and.returnValue( of(MockArticleList) );
+    httpSpy.getAll.and.returnValue( of(MockArticleList) );
 
     TestBed.configureTestingModule({
       declarations: [ ArticlesComponent ],

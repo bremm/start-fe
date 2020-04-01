@@ -1,5 +1,5 @@
 import { Article } from './article'
-import { Price, Currency } from './price'
+import { Currency } from './price'
 
 export const MockArticleList: Article[] = [
     {

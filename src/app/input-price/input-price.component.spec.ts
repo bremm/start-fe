@@ -1,7 +1,6 @@
-import { async, ComponentFixture, TestBed, ComponentFixtureAutoDetect, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, ComponentFixtureAutoDetect } from '@angular/core/testing';
 
 import { InputPriceComponent } from './input-price.component';
-import {Price } from './../price' 
 
 describe('InputPriceComponent', () => {
   let component: InputPriceComponent;

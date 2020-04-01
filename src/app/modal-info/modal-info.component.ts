@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Subject, Observable, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 
 export enum ModalStatus {

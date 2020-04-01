@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Price, Currency } from '../price';
-import { stringify } from 'querystring';
 
 
 @Component({

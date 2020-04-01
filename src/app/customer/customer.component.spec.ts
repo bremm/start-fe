@@ -8,13 +8,12 @@ import { CustomerService } from '../http-client.service';
 describe('CustomerComponent', () => {
   let component: CustomerComponent;
   let fixture: ComponentFixture<CustomerComponent>;
-  let httpSpyGetAll: any;
 
   beforeEach(async(() => {
 
     const httpSpy = jasmine.createSpyObj('CustomerService', ['getAll']);
 
-    httpSpyGetAll = httpSpy.getAll.and.returnValue( of(MockCustomerList) );
+    httpSpy.getAll.and.returnValue( of(MockCustomerList) );
 
 
     TestBed.configureTestingModule({

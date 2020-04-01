@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../http-client.service';
-import { Price } from '../price';
 
 @Component({
   selector: 'app-articles',

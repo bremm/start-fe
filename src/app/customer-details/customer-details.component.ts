@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../customer';
 import { Location } from '@angular/common';
@@ -7,8 +7,9 @@ import { Order } from '../order';
 import { Article } from '../article';
 import { Item } from '../item';
 import { Price } from '../price';
-import { Observable, Subscription, Subject } from 'rxjs';
-import { ModalInfoComponent, ModalStatus } from '../modal-info/modal-info.component';
+import { Observable, Subject } from 'rxjs';
+import { ModalStatus } from '../modal-info/modal-info.component';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -79,7 +80,7 @@ export class CustomerDetailsComponent implements OnInit{
     // Conflicts are not inspected
     this.customer.ordersIds.forEach(
       cOrderId => {
-        const orderToUpdate = this.orderList.filter(o => o.id === cOrderId);
+        const orderToUpdate = this.orderList.filter(order => order.id === cOrderId);
         orderToUpdate.forEach(o => {
           o.customerId = this.customer.id;
           this.orderService.put(o).subscribe();
@@ -123,19 +124,7 @@ export class CustomerDetailsComponent implements OnInit{
       return true;
     this.modalStatus.next(ModalStatus.Visible);
 
-    const leaveAnyway = Observable.create(
-      observer => {
-        this.modalStatus.subscribe(
-          modalStatus => {
-            if(modalStatus === ModalStatus.Accepted)
-              observer.next(false);
-            else
-              observer.next(true);
-          }
-        );
-      }
-    );
-    return leaveAnyway;
+    return this.modalStatus.pipe(map(s => s !== ModalStatus.Accepted ));
   }
 
   acceptDeactivate(): void {

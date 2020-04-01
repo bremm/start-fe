@@ -10,9 +10,6 @@ import { MockCustomerList } from '../mock-customers';
 describe('OrdersComponent', () => {
   let component: OrdersComponent;
   let fixture: ComponentFixture<OrdersComponent>;
-  let orderSpyGetAll: any;
-  let articleSpyGetAll: any;
-  let customerSpyGetAll: any;
 
   beforeEach(async(() => {
 
@@ -20,9 +17,9 @@ describe('OrdersComponent', () => {
     const articleSpy = jasmine.createSpyObj('ArticleService', ['getAll']);
     const customerSpy = jasmine.createSpyObj('ArticleService', ['getAll']);
 
-    orderSpyGetAll = orderSpy.getAll.and.returnValue( of(MockOrderList) );
-    articleSpyGetAll = articleSpy.getAll.and.returnValue( of(MockArticleList) );
-    customerSpyGetAll = customerSpy.getAll.and.returnValue( of(MockCustomerList) );
+    orderSpy.getAll.and.returnValue( of(MockOrderList) );
+    articleSpy.getAll.and.returnValue( of(MockArticleList) );
+    customerSpy.getAll.and.returnValue( of(MockCustomerList) );
 
 
     TestBed.configureTestingModule({
