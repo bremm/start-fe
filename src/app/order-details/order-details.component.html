@@ -120,10 +120,6 @@
         (click)="save(); goBack()">Save</button>
     </div>
 
-    <div class="container text-center">
-        <img 
-        *ngIf="!order"
-        class="m-5 text-center"
-        src="assets/spinner.gif">
-    </div>
 </div>
+
+<app-loading *ngIf="!order"></app-loading>
